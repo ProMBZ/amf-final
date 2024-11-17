@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMF Consultant</title>
+    <link rel="icon" href="logo.jpeg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: transparent;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #0e4166;
+    font-size: 24px;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #0e4166;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: black;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #0e4166;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left;
+    padding-left: 40px;
+}
+
+.hero-logo {
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    margin-left: -50px;
+}
+
+.hero-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.hero-info h1 {
+    font-size: 48px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.globe-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #ffc107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0e4166;
+    font-size: 32px;
+    animation: globeRotation 5s linear infinite;
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ffc107;
+    color: #0e4166;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Statistics Section */
+.statistics {
+    padding: 60px 0;
+    background-color: #ae1515;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.statistics::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 30px;
+    margin: 10px;
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffc107;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.stat-label {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.9);
+    position: relative;
+}
+
+/* Team Section Styles */
+.team {
+    padding: 80px 0;
+    background-color: #f4f4f4;
+}
+
+.team h2 {
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #0e4166;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.team-member {
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.team-member img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.member-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(14, 65, 102, 0.9), transparent);
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-info {
+    transform: translateY(0);
+}
+
+.member-info h3 {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.member-info p {
+    color: #ffc107;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* About Section */
+.about {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-content img {
+    width: 300px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+    flex-grow: 1;
+    margin-left: 40px;
+}
+
+.about-text h2 {
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Services Section */
+.services {
+    padding: 80px 0;
+    background-color: #f4f4f4;
+}
+
+.services h2 {
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.service-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+}
+
+.service-item h3 {
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.gallery h2 {
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Contact Section */
+.contact {
+    padding: 80px 0;
+    background-color: #ae1515;
+    color: #fff;
+}
+
+.contact h2 {
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    height: 150px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    background-color: #ffc107;
+    color: #0e4166;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: whitesmoke;
+    color: black;
+}
+
+/* Footer */
+footer {
+    background-color: #ae1515;
+    padding: 40px 0;
+    color: #fff;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content p {
+    font-size: 16px;
+}
+
+.social-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.social-links li {
+    margin-left: 20px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffc107;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-logo {
+        width: 250px;
+        height: 250px;
+        margin-left: -30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .hero-text {
+        text-align: center;
+        padding-left: 0;
+        margin-top: 20px;
+    }
+
+    .hero-logo {
+        width: 200px;
+        height: 200px;
+        margin-left: 0;
+    }
+
+    .hero-info h1 { 
+        font-size: 36px;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-content img {
+        margin-bottom: 20px;
+        border-radius: 200%;
+    }
+
+    .about-text {
+        margin-left: 0;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-item {
+        min-width: 150px;
+    }
+}
+.slider-section {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+  }
+  
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .slider {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    width: 25%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ae1515;
+  }
+  
+  .slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 80%;
+    max-width: 800px;
+    z-index: 2;
+  }
+  
+  .slide-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .slide-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s 0.2s forwards;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .slider-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #ffc107;
+    color: #0e4166;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s 0.4s forwards;
+  }
+  
+  .slider-btn:hover {
+    background: white;
+    color: #0e4166;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 3;
+  }
+  
+  .slider-container:hover .slider-arrow {
+    opacity: 1;
+  }
+  
+  .prev {
+    left: 20px;
+  }
+  
+  .next {
+    right: 20px;
+  }
+  
+  .slider-arrow:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .dot.active {
+    background: #ffc107;
+    transform: scale(1.2);
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .slide-content h2 {
+      font-size: 2.5rem;
+    }
+    
+    .slide-content p {
+      font-size: 1.2rem;
+    }
+    
+    .slider-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+  }
+        </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>AMF Consultant</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="slider-section">
+        <div class="slider-container">
+          <div class="slider">
+            <div class="slide" style="background-image: url('tax.PNG');">
+              <div class="slide-overlay"></div>
+              <div class="slide-content">
+                <h2>Worried about tax?</h2>
+                <p>We are expert in tax solutions</p>
+                <a href="#contact" class="slider-btn">Contact Us</a>
+              </div>
+            </div>
+            <div class="slide" style="background-image: url('/api/placeholder/1920/1080');">
+              <div class="slide-overlay"></div>
+              <div class="slide-content">
+                <h2>Clearing and Forwarding</h2>
+                <p>Expert guidance for all your tax needs</p>
+                <a href="#services" class="slider-btn">Our Services</a>
+              </div>
+            </div>
+            <div class="slide" style="background-image: url('/api/placeholder/1920/1080');">
+              <div class="slide-overlay"></div>
+              <div class="slide-content">
+                <h2>Business Solutions</h2>
+                <p>Comprehensive tax and business consulting</p>
+                <a href="#about" class="slider-btn">Learn More</a>
+              </div>
+            </div>
+            <div class="slide" style="background-image: url('');">
+              <div class="slide-overlay"></div>
+              <div class="slide-content">
+                <h2>Tax Planning Made Easy</h2>
+                <p>Let us handle your tax complications</p>
+                <a href="#contact" class="slider-btn">Get Started</a>
+              </div>
+            </div>
+          </div>
+          <button class="slider-arrow prev">&#10094;</button>
+          <button class="slider-arrow next">&#10095;</button>
+          <div class="slider-dots"></div>
+        </div>
+      </section>
+  
+    <section id="team" class="team">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="rizwan.png" alt="Syed Muhammad Rizwan">
+                    <div class="member-info">
+                        <h3>Syed Muhammad Rizwan</h3>
+                        <p>Founder, CEO</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="khan.png" alt="Team Member 2">
+                    <div class="member-info">
+                        <h3>Muhammad Khan</h3>
+                        <p>Finance Advisor</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="m.png" alt="Team Member 3">
+                    <div class="member-info">
+                        <h3>Syed Munib Tanwir</h3>
+                        <p>Tax Consultant</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="amina.png" alt="Team Member 2">
+                    <div class="member-info">
+                        <h3>Syeda Amina Rizwan</h3>
+                        <p>Sales Tax Consultant</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="statistics">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" data-target="95">49</div>
+                <div class="stat-label">Trusted Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="403">206</div>
+                <div class="stat-label">Project Done</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="16">7</div>
+                <div class="stat-label">Expert Advisor</div>
+            </div>
+        </div>
+    </section>
+     <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <img src="rizwan.png" alt="Syed Muhammad Rizwan">
+                <div class="about-text">
+                    <h2>Syed Muhammad Rizwan</h2>
+                    <p>AMF Consultant is an Income Tax and Sales Tax consulting firm founded in 2007. Over the passage of time, we have made a prominent name in the corporate sector.</p>
+                    <p>With years of experience in providing financial services, Syed Muhammad Rizwan leads AMF Consultant as a trusted advisor in all accounting matters, ensuring quality and professionalism in every service offered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <h3>Professional Accounting</h3>
+                    <p>Comprehensive accounting solutions tailored to your business needs.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Income Tax Consultancy</h3>
+                    <p>Expert consultancy to help you manage and optimize your income taxes.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Sales Tax Consultancy</h3>
+                    <p>Specialized services in sales tax planning and compliance.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Wealth Tax Consultancy</h3>
+                    <p>Efficient management of wealth tax to protect your assets.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Corporate Affairs</h3>
+                    <p>Guidance on corporate affairs and ensuring statutory compliance.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Clearing and Forwarding</h3>
+                    <p>Reliable clearing and forwarding services to support your logistics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="post 1.jpeg" alt="Post 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="post 2.jpeg" alt="Post 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="post 3.jpeg" alt="Post 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="post 4.jpeg" alt="Post 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-form">
+                <form id="contact-form" action="https://formspree.io/f/xrbgqvbl" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2024 AMF Consultant. All rights reserved.</p>
+            <ul class="social-links">
+            <li><a href="https://www.facebook.com/AMFCONSULTANT"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/amf-consultant/"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        const dotsContainer = document.querySelector('.slider-dots');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        
+        // Create dots
+        slides.forEach((_, index) => {
+          const dot = document.createElement('div');
+          dot.classList.add('dot');
+          if (index === 0) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(index));
+          dotsContainer.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.dot');
+        
+        function updateDots() {
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+          });
+        }
+        
+        function goToSlide(n) {
+          currentSlide = n;
+          slider.style.transform = `translateX(-${currentSlide * 25}%)`;
+          updateDots();
+        }
+        
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % slideCount;
+          goToSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+          currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+          goToSlide(currentSlide);
+        }
+        
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        // Auto slide
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        // Pause auto slide on hover
+        slider.addEventListener('mouseenter', () => {
+          clearInterval(slideInterval);
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+          slideInterval = setInterval(nextSlide, 5000);
+        });
+      })
+
+</script>
