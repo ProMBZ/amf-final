@@ -683,6 +683,9 @@ footer {
     gap: 10px;
     z-index: 3;
   }
+  html {
+    scroll-behavior: smooth;
+}
   
   .dot {
     width: 12px;
@@ -738,7 +741,7 @@ footer {
         </div>
     </header>
 
-    <section class="slider-section">
+    <section id="home" class="slider-section">
         <div class="slider-container">
           <div class="slider">
             <div class="slide" style="background-image: url('tax.PNG');">
@@ -768,8 +771,8 @@ footer {
             <div class="slide" style="background-image: url('');">
               <div class="slide-overlay"></div>
               <div class="slide-content">
-                <h2>Tax Planning Made Easy</h2>
-                <p>Let us handle your tax complications</p>
+                <h2>Professional Accounting</h2>
+                <p>Comprehensive accounting solutions.</p>
                 <a href="#contact" class="slider-btn">Get Started</a>
               </div>
             </div>
@@ -820,15 +823,15 @@ footer {
     <section class="statistics">
         <div class="stats-container">
             <div class="stat-item">
-                <div class="stat-number" data-target="95">49</div>
+                <div class="stat-number" data-target="95">89</div>
                 <div class="stat-label">Trusted Clients</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" data-target="403">206</div>
+                <div class="stat-number" data-target="403">318</div>
                 <div class="stat-label">Project Done</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" data-target="16">7</div>
+                <div class="stat-number" data-target="16">13</div>
                 <div class="stat-label">Expert Advisor</div>
             </div>
         </div>
@@ -995,5 +998,13 @@ footer {
           slideInterval = setInterval(nextSlide, 5000);
         });
       })
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 
 </script>
