@@ -29,6 +29,18 @@ body {
     padding: 0 20px;
 }
 
+.footer-link {
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+}
+.footer-link .blue-text {
+  color: #0000ff;
+}
+.footer-link .white-text {
+  color: white;
+}
 /* Header */
 header {
     background-color: transparent;
@@ -494,7 +506,7 @@ footer {
 }
 
 .social-links a:hover {
-    color: #ffc107;
+    color: #0798ff;
 }
 
 /* Responsive Design */
@@ -556,6 +568,15 @@ footer {
     height: 600px;
     overflow: hidden;
   }
+  @media (max-width: 992px) {
+    .nav-links {
+        display: none; /* Hide menu on small screens */
+    }
+    .menu-icon {
+        display: block; /* Show menu icon on small screens */
+        cursor: pointer;
+    }
+}
   
   .slider-container {
     position: relative;
@@ -744,7 +765,7 @@ footer {
     <section id="home" class="slider-section">
         <div class="slider-container">
           <div class="slider">
-            <div class="slide" style="background-image: url('tax.PNG');">
+            <div class="slide">
               <div class="slide-overlay"></div>
               <div class="slide-content">
                 <h2>Worried about tax?</h2>
@@ -752,15 +773,7 @@ footer {
                 <a href="#contact" class="slider-btn">Contact Us</a>
               </div>
             </div>
-            <div class="slide" style="background-image: url('/api/placeholder/1920/1080');">
-              <div class="slide-overlay"></div>
-              <div class="slide-content">
-                <h2>Clearing and Forwarding</h2>
-                <p>Expert guidance for all your tax needs</p>
-                <a href="#services" class="slider-btn">Our Services</a>
-              </div>
-            </div>
-            <div class="slide" style="background-image: url('/api/placeholder/1920/1080');">
+            <div class="slide">
               <div class="slide-overlay"></div>
               <div class="slide-content">
                 <h2>Business Solutions</h2>
@@ -768,12 +781,20 @@ footer {
                 <a href="#about" class="slider-btn">Learn More</a>
               </div>
             </div>
-            <div class="slide" style="background-image: url('');">
+            <div class="slide">
               <div class="slide-overlay"></div>
               <div class="slide-content">
                 <h2>Professional Accounting</h2>
                 <p>Comprehensive accounting solutions.</p>
                 <a href="#contact" class="slider-btn">Get Started</a>
+              </div>
+            </div>
+             <div class="slide">
+              <div class="slide-overlay"></div>
+              <div class="slide-content">
+                <h2>Clearing and Forwarding</h2>
+                <p>Expert guidance for all your tax needs</p>
+                <a href="#services" class="slider-btn">Our Services</a>
               </div>
             </div>
           </div>
@@ -926,10 +947,15 @@ footer {
 
     <footer>
         <div class="container footer-content">
-            <p>&copy; 2024 AMF Consultant. All rights reserved.</p>
+          <center><a href="https://aicoders.tech" class="footer-link" target="_blank">
+            <span class="white-text">Powered By </span><span class="blue-text">AI</span> <span class="blue-text">CODERS</span>
+        </a>
+      </center>
+      <br>
+      <br>
             <ul class="social-links">
-            <li><a href="https://www.facebook.com/AMFCONSULTANT"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="https://www.linkedin.com/company/amf-consultant/"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61566492204898" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/ai-coders/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
             </ul>
         </div>
     </footer>
@@ -939,6 +965,7 @@ footer {
 
 
 <script>
+
 
     document.addEventListener('DOMContentLoaded', function() {
         const slider = document.querySelector('.slider');
@@ -968,8 +995,13 @@ footer {
         }
         
         function goToSlide(n) {
+          // Update the current slide index
           currentSlide = n;
+        
+          // Ensure 'slider' is properly defined and accessible
           slider.style.transform = `translateX(-${currentSlide * 25}%)`;
+        
+          // Call updateDots if it exists
           updateDots();
         }
         
